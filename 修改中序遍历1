@@ -1,0 +1,36 @@
+//上道题是我理解错误，returnSize其实是这个数组的长度
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     struct TreeNode *left;
+ *     struct TreeNode *right;
+ * };
+ */
+/**
+ * Note: The returned array must be malloced, assume caller calls free().
+ */
+void inorder(struct TreeNode* root, int* res,int* size)
+{
+    if(!root)
+    {
+        return;
+    }
+    else
+    {
+        inorder(root->left,res,size);
+        res[(*size)++]=root->val;
+        inorder(root->right,res,size);
+    }
+
+}
+int* inorderTraversal(struct TreeNode* root, int* returnSize) {
+    int* res=(int*)malloc(sizeof(int)*501);
+    if(!res)
+    {
+        exit(-1);
+    }
+    (*returnSize)=0;
+    inorder(root,res,returnSize);
+    return res;
+}
