@@ -1,3 +1,5 @@
+//这是在力扣上一道题，目的是实现二叉树中序遍历的接口，返回一个叫returnSize的数组
+
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -13,7 +15,7 @@ int* inorderTraversal(struct TreeNode* root, int* returnSize) {
     returnSize=NULL;
     if(root)
     {
-        int i=0;
+        int i=0;//在这一步出现了问题，i在每次调用时都被初始化为0
         inorderTraversal(root->left,returnSize);
         returnSize=(int*)realloc(returnSize,sizeof(int)*(i+1));
         returnSize[i]=root->val;
